@@ -1,3 +1,5 @@
+website
+
 # Logs
 logs
 *.log
@@ -90,6 +92,10 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
+
+# antd style build
+es
+lib
 
 # Gatsby files
 .cache/
