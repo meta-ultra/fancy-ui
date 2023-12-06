@@ -232,6 +232,9 @@ importers:
       '@tarojs/cli':
         specifier: 3.6.16
         version: 3.6.16(@types/react@18.2.9)(postcss@8.4.32)
+      '@tarojs/plugin-html':
+        specifier: ^3.3.3
+        version: 3.3.3
       '@tarojs/taro-loader':
         specifier: 3.6.16
         version: 3.6.16(@types/react@18.2.9)(postcss@8.4.32)
@@ -304,6 +307,106 @@ importers:
       webpack:
         specifier: 5.78.0
         version: 5.78.0(@swc/core@1.3.23)
+
+  packages/demo-for-web:
+    dependencies:
+      '@meta-ultra/app-router':
+        specifier: ^0.3.5
+        version: 0.3.5(react-router-dom@6.20.0)(react@18.2.0)
+      '@meta-ultra/fancy-ui':
+        specifier: workspace:^
+        version: link:../fancy-ui
+      core-js:
+        specifier: ^3.33.3
+        version: 3.33.3
+      core-js-pure:
+        specifier: ^3.33.3
+        version: 3.33.3
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      react-icons:
+        specifier: ^4.12.0
+        version: 4.12.0(react@18.2.0)
+      react-router-dom:
+        specifier: ^6.20.0
+        version: 6.20.0(react-dom@18.2.0)(react@18.2.0)
+    devDependencies:
+      '@babel/core':
+        specifier: ^7.22.5
+        version: 7.22.5
+      '@babel/plugin-transform-react-constant-elements':
+        specifier: ^7.22.5
+        version: 7.22.5(@babel/core@7.22.5)
+      '@babel/plugin-transform-runtime':
+        specifier: ^7.22.5
+        version: 7.22.5(@babel/core@7.22.5)
+      '@babel/preset-env':
+        specifier: ^7.22.5
+        version: 7.22.5(@babel/core@7.22.5)
+      '@babel/preset-react':
+        specifier: ^7.22.5
+        version: 7.22.5(@babel/core@7.22.5)
+      '@babel/preset-typescript':
+        specifier: ^7.22.5
+        version: 7.22.5(@babel/core@7.22.5)
+      '@babel/runtime-corejs3':
+        specifier: ^7.22.5
+        version: 7.22.5
+      '@types/node':
+        specifier: ^20.2.5
+        version: 20.2.5
+      '@types/react':
+        specifier: ^18.2.9
+        version: 18.2.9
+      '@types/react-dom':
+        specifier: ^18.2.5
+        version: 18.2.5
+      '@types/webpack-env':
+        specifier: ^1.18.4
+        version: 1.18.4
+      autoprefixer:
+        specifier: ^10.4.16
+        version: 10.4.16(postcss@8.4.32)
+      babel-loader:
+        specifier: ^9.1.3
+        version: 9.1.3(@babel/core@7.22.5)(webpack@5.89.0)
+      babel-plugin-import:
+        specifier: ^1.13.8
+        version: 1.13.8
+      css-loader:
+        specifier: ^6.8.1
+        version: 6.8.1(webpack@5.89.0)
+      html-webpack-plugin:
+        specifier: ^5.5.3
+        version: 5.5.3(webpack@5.89.0)
+      http-proxy-middleware:
+        specifier: ^2.0.6
+        version: 2.0.6(@types/express@4.17.21)
+      postcss-loader:
+        specifier: ^7.3.3
+        version: 7.3.3(postcss@8.4.32)(typescript@5.3.2)(webpack@5.89.0)
+      postcss-preset-env:
+        specifier: ^9.3.0
+        version: 9.3.0(postcss@8.4.32)
+      stream-browserify:
+        specifier: ^3.0.0
+        version: 3.0.0
+      style-loader:
+        specifier: ^3.3.3
+        version: 3.3.3(webpack@5.89.0)
+      webpack:
+        specifier: ^5.89.0
+        version: 5.89.0(webpack-cli@5.1.4)
+      webpack-cli:
+        specifier: ^5.1.4
+        version: 5.1.4(webpack-dev-server@4.15.1)(webpack@5.89.0)
+      webpack-dev-server:
+        specifier: ^4.15.1
+        version: 4.15.1(webpack-cli@5.1.4)(webpack@5.89.0)
 
   packages/fancy-ui:
     dependencies:
@@ -5216,6 +5319,12 @@ packages:
       - supports-color
       - vue
 
+  /@tarojs/plugin-html@3.3.3:
+    resolution: {integrity: sha512-mfrmfQp7KoTEFx0KDHLbX3NKCS6IYKPwHnQUIbHjkvnTe6ScCH9u74Vhc+hltDa24avtJidl36lAdBM8ZpYyOA==}
+    dependencies:
+      '@tarojs/shared': 3.3.3
+    dev: true
+
   /@tarojs/plugin-platform-alipay@3.6.16(@types/react@18.2.9)(postcss@8.4.32)(react@18.2.0):
     resolution: {integrity: sha512-PXHsk4oJoTObmZpZfTzh6m+3w3x7nIWE7xbkA0WBIClRkcL6vguOQCSzG+XX8Kxou3YctXGkAmdeT4T7Oc37/Q==}
     dependencies:
@@ -5387,6 +5496,10 @@ packages:
       - postcss
       - supports-color
       - vue
+
+  /@tarojs/shared@3.3.3:
+    resolution: {integrity: sha512-NfOG8VLFRu4fxGSHGizRw8UR29w2x06nggnFcqurn/kAZ7laeoCn0rhQ0/yrD7NlMNMPca+P9N3AgfLl4VT9tg==}
+    dev: true
 
   /@tarojs/shared@3.6.16:
     resolution: {integrity: sha512-Jlp8qIvbSxR/4CJ8UD0EyZp7eXvkwllOeHNuhkiZNs30mPLFhu77XNGIEkLemITYuRaNAVPFCw9h5rI9EUlYjQ==}
@@ -12713,6 +12826,7 @@ packages:
 
   /json-schema-traverse@1.0.0:
     resolution: {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==}
+    requiresBuild: true
     dev: true
 
   /json-schema@0.4.0:

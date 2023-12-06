@@ -10,6 +10,18 @@
       "path": "cz-conventional-changelog"
     }
   },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write --ignore-unknown",
+      "eslint"
+    ],
+    "*.{htm,html}": [
+      "prettier --write"
+    ],
+    "*.{css,less,scss,sass}": [
+      "stylelint --fix"
+    ]
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.6.5",
     "@commitlint/config-conventional": "^17.6.5",
