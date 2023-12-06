@@ -48,6 +48,34 @@ const libStylePlugin = (options = {}) => {
   const filter = createFilter(include, exclude);
   const getLoader = (filepath) => allLoaders.find((loader) => loader.regex.test(filepath));
 
+  const styles = {};
+  // Get all CSS modules in the order that they were imported
+  const getCSSModules = (id, getModuleInfo, modules = new Set(), visitedModules = new Set()) => {
+    if (modules.has(id) || visitedModules.has(id)) {
+      return new Set();
+    }
+
+    if (filter(id)) modules.add(id);
+
+    // Prevent infinite recursion with circular dependencies
+    visitedModules.add(id);
+
+    // Recursively retrieve all of imported CSS modules
+    const info = getModuleInfo(id);
+    if (!info) return modules;
+
+    info.importedIds.forEach((importId) => {
+      modules = new Set(
+        [].concat(
+          Array.from(modules),
+          Array.from(getCSSModules(importId, getModuleInfo, modules, visitedModules))
+        )
+      );
+    });
+
+    return modules;
+  };
+
   return {
     name: PLUGIN_NAME,
 
@@ -59,6 +87,13 @@ const libStylePlugin = (options = {}) => {
     async transform(code, id) {
       const loader = getLoader(id);
       if (!filter(id) || !loader) return null;
+
+      // Keep track of every stylesheet
+      // Check if it changed since last render
+      // NOTE: If we are in transform block, we can assume styles[id] !== code, right?
+      if (styles[id] !== code && (styles[id] || code)) {
+        styles[id] = code;
+      }
 
       modulesIds.add(id);
 
@@ -93,7 +128,26 @@ const libStylePlugin = (options = {}) => {
         map: { mappings: "" },
       };
     },
+    generateBundle(opts, bundle) {
+      const ids = new Set();
 
+      // Determine import order of files
+      for (const file in bundle) {
+        const root = bundle[file].facadeModuleId;
+        const modules = getCSSModules(root, this.getModuleInfo);
+        modules.forEach((id) => ids.add(id));
+      }
+
+      // Combine all stylesheets, respecting import order
+      const css = Array.from(ids)
+        .map((id) => styles[id])
+        .join("\n");
+
+      let fileName = options.output || "index.css";
+
+      // Emit styles to file
+      this.emitFile({ type: "asset", name: "", fileName, source: css + "\n" });
+    },
     async closeBundle() {
       if (!importCSS) return;
 

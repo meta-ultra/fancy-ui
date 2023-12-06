@@ -2,7 +2,8 @@ const postcss = require("postcss");
 const postcssModules = require("postcss-modules");
 const { replaceFormat } = require("./functions");
 
-const DEFAULT_SCOPED_NAME = "[local]_[hash:hex:6]";
+// const DEFAULT_SCOPED_NAME = "[local]_[hash:hex:6]";
+const DEFAULT_SCOPED_NAME = "[local]";
 
 /**
  * @typedef {object} postCssLoaderOptions

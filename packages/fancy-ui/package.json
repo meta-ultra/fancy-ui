@@ -14,9 +14,11 @@
   },
   "module": "./es/index.js",
   "typings": "./es/index.d.ts",
-  "sideEffects": false,
   "files": [
     "./es"
+  ],
+  "sideEffects": [
+    "**/*.css"
   ],
   "publishConfig": {
     "access": "public",

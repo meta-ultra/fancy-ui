@@ -5,7 +5,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve"
+    "dev": "pnpm run \"/^dev:.*/\"",
+    "dev:src": "webpack serve",
+    "dev:app-router": "app-router -w"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +20,7 @@
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
     "@babel/runtime-corejs3": "^7.22.5",
+    "@meta-ultra/app-router-cli": "^0.4.0",
     "@types/node": "^20.2.5",
     "@types/react": "^18.2.9",
     "@types/react-dom": "^18.2.5",
@@ -37,8 +40,8 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "@meta-ultra/fancy-ui": "workspace:^",
     "@meta-ultra/app-router": "^0.3.5",
+    "@meta-ultra/fancy-ui": "workspace:^",
     "core-js": "^3.33.3",
     "core-js-pure": "^3.33.3",
     "react": "^18.2.0",
