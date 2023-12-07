@@ -21,8 +21,8 @@ const router = createRouter([
     errorElement: <RootErrorElement notFound={undefined} />,
     children: [
       {
-        id: "signin-signup-1",
-        path: "signin-signup-1",
+        id: "login1",
+        path: "login1",
         element: (
           <RouteSegmentElement
             layout={RouteSegmentElementLayout.NO}
@@ -30,7 +30,7 @@ const router = createRouter([
             error={undefined}
             notFound={undefined}
           >
-            {lazy(() => import("./app/signin-signup-1/page"))}
+            {lazy(() => import("./app/login1/page"))}
           </RouteSegmentElement>
         ),
       },
